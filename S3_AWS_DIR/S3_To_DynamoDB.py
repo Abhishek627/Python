@@ -1,6 +1,15 @@
 import boto3
 client = boto3.client("s3")
 
+"""
+This code has been designed by - Amrit Raj
+The code uses the boto3 to read the contents of a .txt file stored in a S3 bucket in AWS
+and transfer the contents to a DynamoDB table at AWS.
+This code is for example purpose and can be suitably modified for any .txt or other file format
+and for any table.
+For this example, we have assumed an employee table with three attributes - id, name, and salary
+"""
+
 dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table('employee')
 
