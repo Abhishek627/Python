@@ -1,0 +1,35 @@
+TELNET
+==In Python telnet is implemented by the module telnetlib which has the Telnet class which has the required
+   methods to establish the connection..
+
+import telnetlib
+import time
+password = ("cisco")
+tn = telnetlib.Telnet("192.168.1.10")
+tn.read_until("Password: ")
+tn.write(password + "\n")
+tn.write("enable \n")
+tn.read_until("Password: ")
+tn.write(password + "\n")
+tn.write("conf t \n")
+time.sleep(1)
+tn.write("interface loopback10 \n")
+time.sleep(1)
+tn.write("ip address 10.1.1.1 255.255.255.0 \n")
+time.sleep(1)
+tn.write("end \n")
+time.sleep(1)
+tn.write("exit \n")
+print tn.read_very_eager()
+print("\nThank You")
+
+
+output:-
+
+root@deepak:~# python telnet.py
+SW1#conf t
+Enter configuration commands, one per line. End with CNTL/Z.
+SW1(config)#interface loopback100
+SW1(config-if)#ip address 100.1.1.1 255.255.255.0
+SW1(config-if)#end
+SW1#
